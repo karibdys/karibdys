@@ -1,0 +1,25 @@
+<div id="pantalla_selector">
+  <div id="selector">
+    <label for="selector_seccion"> ¿Dónde te diriges, caminante?</label>
+    <select id="selector_seccion" name="selector_seccion" class="form-select" [(ngModel)]="seccionSeleccionadaId" (ngModelChange)="buscarSeccion(seccionSeleccionadaId)">  
+      @for (secc of secciones; track secc.id) {
+        <option [value]="secc.id">{{secc.nombre}}</option>
+      }
+    </select>
+    @if (seccionSeleccionadaId!= 0){
+      <div class="seccion_info">
+        <div class="informacion">
+          <span>
+            {{seccionSeleccionada.desc}}
+          </span>
+        </div>
+        <div>
+          <button class="btn btn-success" (click)="irA(seccionSeleccionada.id)">Ir a la sección {{seccionSeleccionada.nombre}}</button>
+        </div>
+      </div>
+      
+    }    
+  </div>
+
+
+</div>
